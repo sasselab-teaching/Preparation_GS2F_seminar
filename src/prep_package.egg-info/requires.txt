@@ -1,6 +1,0 @@
-requests
-numpy>=1.20
-
-[dev]
-pytest
-numpy
