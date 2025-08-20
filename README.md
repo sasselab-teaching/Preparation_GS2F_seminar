@@ -48,7 +48,7 @@ ef.hello('world')
 
    3. Here are some selected bookmarks that may be useful to work through
 
-      <img align=left src="DataCampBookmarks.png" alt="My Bookmarks" width="600" />
+      <img align=left src="DataCampBookmarks.png" alt="My Bookmarks" width="600" height='750' />
 
 
 
