@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+setup.cfg
+src/prep_package/__init__.py
+src/prep_package/example_functions.py
+src/prep_package.egg-info/PKG-INFO
+src/prep_package.egg-info/SOURCES.txt
+src/prep_package.egg-info/dependency_links.txt
+src/prep_package.egg-info/requires.txt
+src/prep_package.egg-info/top_level.txt

@@ -1,3 +1,20 @@
+Metadata-Version: 2.4
+Name: prep_package
+Version: 0.1.0
+Summary: A modern example package using PEP 621
+Author: Your Name
+Author-email: Your Name <you@example.com>
+License: MIT
+Project-URL: Homepage, https://github.com/yourusername/mypackage
+Project-URL: Documentation, https://yourdocs.example.com
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: numpy>=1.20
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: numpy; extra == "dev"
+
 # Resources for preparation
 
 ## Required Python Tutorials
@@ -26,17 +43,6 @@ You want to make a Python package that you can install in **editable mode** with
 This is super useful when you are working on a project and want to use other people's plotting, read, or processing functions, and objects. You can all add the functions to a common `modules.py` script, or even have several ones for different types of objects, e.g. `plot_functions.py`, `io_utils.py`. Before starting to work, you can pull changes that your peers added from github, and start using them simply by `from mypackage.io_utils import readcsv`. Read more [here](https://github.com/sasselab-teaching/GenomicS2F_seminar//blob/main/course_resources/pip_installable_code_base.md)
 
 Try it out with this repository! Install with pip, and import the example module.
-
-```
-# If 'hello' function was imported into __init__.py
-import prep_package as pp
-pp.hello('world')
-'Hello, world!'
-# Else, you can always import it from the scripts
-import prep_package.example_functions as ef
-ef.hello('world')
-'Hello, world!'
-```
 
 ## Online courses
 

@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prep_package"
+version = "0.1.0"
+description = "A modern example package using PEP 621"
+authors = [
+    { name="Your Name", email="you@example.com" }
+]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "requests",
+    "numpy>=1.20"
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "numpy"]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/mypackage"
+Documentation = "https://yourdocs.example.com"
