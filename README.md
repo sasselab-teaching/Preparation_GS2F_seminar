@@ -43,44 +43,10 @@ ef.hello('world')
 1. [DataCamp](https://datacamp.com/courses)
 
    1. Check out their [python courses](https://app.datacamp.com/learn/courses?technologies=2)
-
    2. Check out the offered tutorials as well
-
    3. Here are some selected bookmarks that may be useful to work through
 
-      <div>
-          <img align=left src="DataCampBookmarks.png" alt="My Bookmarks" width="600" height='750' />
-      </div>
-   
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![My Bookmarks](DataCampBookmarks.png)
 
 ## Jupyter Lab
 
