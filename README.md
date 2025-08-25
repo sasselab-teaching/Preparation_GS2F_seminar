@@ -17,13 +17,13 @@ Please take a look at some of the tutorials for these common python libraries. Y
 - [pytorch.lightning](https://lightning.ai/docs/pytorch/stable/tutorials.html)
 - [h5py](https://docs.h5py.org/en/latest/quick.html)
 
-## Reuse your modules and functions with [setuptools](https://github.com/sasselab-teaching/GenomicS2F_seminar//blob/main/course_resources/pip_installable_code_base.md)
+## Reuse your modules and functions with [setuptools](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md)
 
 You want to make a Python package that you can install in **editable mode** with 
 
 `pip install -e .` 
 
-This is super useful when you are working on a project and want to use other people's plotting, read, or processing functions, and objects. You can all add the functions to a common `modules.py` script, or even have several ones for different types of objects, e.g. `plot_functions.py`, `io_utils.py`. Before starting to work, you can pull changes that your peers added from github, and start using them simply by `from mypackage.io_utils import readcsv`. Read more [here](https://github.com/sasselab-teaching/GenomicS2F_seminar//blob/main/course_resources/pip_installable_code_base.md)
+This is super useful when you are working on a project and want to use other people's plotting, read, or processing functions, and objects. You can all add the functions to a common `modules.py` script, or even have several ones for different types of objects, e.g. `plot_functions.py`, `io_utils.py`. Before starting to work, you can pull changes that your peers added from github, and start using them simply by `from mypackage.io_utils import readcsv`. Read more [here](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md)
 
 Try it out with this repository! Install with pip, and import the example module.
 
@@ -139,12 +139,24 @@ There are a few [key papers](https://github.com/sasselab-teaching/GenomicS2F_sem
 - [Surag Nair (Stanford): DagoNN](https://www.youtube.com/live/GmOaz5rPYsU?si=cS-JUvNGotyB7I2i), [tutorial](https://www.youtube.com/live/vTENdMwmclA?si=MEY3Egrd0kNWU4z-)
 - [MIA: Carl de Boer, Learning the rules of gene regulation with millions of synthetic promoters](https://youtu.be/rRjgNEHp9mw?si=44fY9ncqKAZBHSpc)
 
-## Python training scripts
+## Python notebook training scripts
+
+- [Here](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/tree/main/notebooks)
+
+## More Resources and Notebooks
 
 - [Coming soon](link)
 
-## Resources and Notebooks
+## License [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-- [Coming soon](link)
+All course materials (text, slides, images, exercises) are licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+You are free to share and adapt the content for non-commercial purposes, as long as proper attribution is given and adaptations are shared under the same license.
+
+Please see [CONTRIBUTORS.md](CONTRIBUTORS.md) for the full list of contributors.
+
+## Attribution
+
+This course was created by [Alexander Sasse](https://github.com/LXsasse) and contributors.
+See [CONTRIBUTORS.md](CONTRIBUTORS.md) for the full list of contributors.
 
   
