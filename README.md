@@ -17,37 +17,6 @@ Please take a look at some of the tutorials for these common python libraries. Y
 - [pytorch.lightning](https://lightning.ai/docs/pytorch/stable/tutorials.html)
 - [h5py](https://docs.h5py.org/en/latest/quick.html)
 
-## Reuse your modules and functions with [setuptools](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md)
-
-You want to make a Python package that you can install in **editable mode** with 
-
-`pip install -e .` 
-
-This is super useful when you are working on a project and want to use other people's plotting, read, or processing functions, and objects. You can all add the functions to a common `modules.py` script, or even have several ones for different types of objects, e.g. `plot_functions.py`, `io_utils.py`. Before starting to work, you can pull changes that your peers added from github, and start using them simply by `from mypackage.io_utils import readcsv`. Read more [here](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md)
-
-Try it out with this repository! Install with pip, and import the example module.
-
-```
-# If 'hello' function was imported into __init__.py
-import prep_package as pp
-pp.hello('world')
-'Hello, world!'
-# Else, you can always import it from the scripts
-import prep_package.example_functions as ef
-ef.hello('world')
-'Hello, world!'
-```
-
-## Online courses
-
-1. [DataCamp](https://datacamp.com/courses)
-
-   1. Check out their [python courses](https://app.datacamp.com/learn/courses?technologies=2)
-   2. Check out the offered tutorials as well
-   3. Here are some selected bookmarks that may be useful to work through
-
-![My Bookmarks](DataCampBookmarks.png)
-
 ## Jupyter Lab
 
 JupyterLab is a web-based interactive development environment for working with notebooks, code, and data. It is a next-generation user interface for Project Jupyter, offering a  flexible and customizable workspace for data science, scientific  computing, and machine learning. It allows users to arrange multiple documents and activities side by side using tabs and splitters.
@@ -82,7 +51,7 @@ If you use a cluster, time and resources will be allocated to you also based on 
 
 ## Managing python packages
 
-We recommend that use a package managing system. 
+When you work locally, we recommend that use a package managing system. 
 
 conda is a **system** package manager. pip is a **Python** package manager. 
 
@@ -97,7 +66,7 @@ On the other hand, pip can only install Python packages, and it quite  often scr
 
 ## VS Code
 
-The Open Source AI Code Editor
+The Open Source AI Code Editor (much more helpful than a text editor for coding)
 
 - [Getting started](https://code.visualstudio.com/docs/introvideos/basics)
 - Has many useful [extensions](https://marketplace.visualstudio.com/VSCode) that make writing code much easier. Install them easily after opening the app. 
@@ -115,6 +84,27 @@ Version control is a system that helps developers track and manage changes to th
 Python installable packages make it easy to share and reuse code across your assignments and projects. Using **pip**, you can install packages from the Python Package Index (PyPI) or other sources with a single command. To create your own package, tools like **setuptools** let you define your project’s metadata—such as its name, version, and dependencies—in a `setup.py` or `pyproject.toml` file. This way, you or your teammates can quickly install your shared functions, objects, and modules into your environment with a single command (`pip install package-name`) , making collaboration and project management much smoother.
 
 - [Short summary](https://github.com/sasselab-teaching/GenomicS2F_seminar/blob/main/course_resources/pip_installable_code_base.md)
+
+### Reuse your modules and functions with [setuptools](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md)
+
+You want to make a Python package that you can install in **editable mode** with 
+
+`pip install -e .` 
+
+This is super useful when you are working on a project and want to use other people's plotting, read, or processing functions, and objects. You can all add the functions to a common `modules.py` script, or even have several python files for different types of objects, e.g. `plot_functions.py`, `io_utils.py`. Before starting to work, you can pull changes that your peers added from github, and start using them simply by `from mypackage.io_utils import readcsv`. Read more [here](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md). When a package was installed in editable mode, changes in your package will directly be usable without having to install them again.
+
+Try it out with this repository! Install with pip, and import the example module. You can simply edit the `setup.cfg` and `pyproject.toml` and `src/` content to create your own.
+
+```
+# If 'hello' function was imported into __init__.py
+import prep_package as pp
+pp.hello('world')
+'Hello, world!'
+# Else, you can always import it from the scripts
+import prep_package.example_functions as ef
+ef.hello('world')
+'Hello, world!'
+```
 
 ## Papers
 
@@ -142,6 +132,16 @@ There are a few [key papers](https://github.com/sasselab-teaching/GenomicS2F_sem
 ## Python notebook training scripts
 
 - [Here](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/tree/main/notebooks)
+
+## Online courses
+
+1. [DataCamp](https://datacamp.com/courses)
+
+   1. Check out their [python courses](https://app.datacamp.com/learn/courses?technologies=2)
+   2. Check out the offered tutorials as well
+   3. Here are some selected bookmarks that may be useful to work through
+
+![My Bookmarks](DataCampBookmarks.png)
 
 ## More Resources and Notebooks
 
