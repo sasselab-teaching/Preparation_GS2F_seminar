@@ -1,8 +1,47 @@
-# Resources for preparation
+# Resources for course preparation
 
-## Required Python Tutorials
+## **Bash** (Bourne Again SHell) 
 
-Please take a look at some of the tutorials for these common python libraries. You should be able to plot work with their objects and create nice looking figures for analysis. 
+is a powerful command-line tool that makes it easy to manage software and work on remote machines via [the terminal](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/Setup_work_environment.md). With Bash, you can quickly install and update Python packages using tools like `pip` or `conda`, making project setup and dependency management much more efficient. It’s especially important for working on remote servers, where you don’t have a graphical interface and need to rely on terminal commands to navigate files, set up environments, and run programs. Knowing Bash simplifies installing packages, managing projects, and maintaining productivity when working in remote or cloud-based environments.
+
+See [here for basics](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/Setup_work_environment.md)
+
+## Managing python packages
+
+When you work locally on your own computer, we recommend that use a package managing system. 
+
+conda is a **system** package manager. pip is a **Python** package manager. 
+
+With conda you can install much more than just Python libraries.  You can install entire software stacks such as Python + Django + Celery + PostgreSQL + nginx. You can install R, R libraries, Node.js, Java  programs, C and C++ programs and libraries, Perl programs, the list is  pretty long and limitless. conda has an `env` system that  allows you to have all of these installed across multiple different  environments. Also, conda is able to do all these software and package  installations in an isolated, userspace manner. This is *critical* because it means that you can install complex software stacks on a  system (such as your employer's heavily regulated production server) **without** needing root privileges.
+
+On the other hand, pip can only install Python packages, and it quite often screws up the installations on multi-user systems, breaking global system dependencies and/or the user's dependency stacks. This is why  people who rely only on pip MUST use virtualenv. 
+
+Please see here how to set up your [virtual environment](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/Setup_work_environment.md)
+
+For example use:
+
+- [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/install): is s minimal installer for Conda that provides Conda itself (~400MB), but without all the extra pre-installed packages that come with Anaconda (~4GB).
+- [Mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) is a modern alternative to Miniconda.
+- [Venv and pip](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
+
+## VS Code
+
+For writing code outside Jupyter Lab, we recommend using **Visual Studio Code (VS Code)** . VS Code is a free, open-source code editor developed by Microsoft. It is lightweight, fast, and highly customizable, making it one of the most popular tools for programmers.
+
+- [Getting started](https://code.visualstudio.com/docs/introvideos/basics)
+- Has many useful [extensions](https://marketplace.visualstudio.com/VSCode) that make writing code much easier. Install them easily after opening the app. For example, there is Jupyter extension to directly use Jupyter Lab, and an extension to connect with a remote machine (Remote-SSH), as well as git, and many more useful ones. 
+- Get suggestions and help during code development with [GitHub's Copilot](https://code.visualstudio.com/docs/copilot/overview) directly in Vs Code
+  - You should apply for [GitHub education](https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student) with your student card to get unlimited access to Copilot Pro
+
+## Version control with Git(Hub)
+
+Version control is a system that helps developers track and manage changes to their code over time. **Git** is a powerful distributed version control tool that allows multiple people to work on a project simultaneously, keeping a history of all modifications and enabling easy collaboration, branching, and merging. **GitHub** is a cloud-based platform built on top of Git that provides hosting for repositories, making it simple to share code, review changes, and contribute to open-source or team projects. Together, Git and GitHub ensure smoother collaboration, better organization, and safer development practices.
+
+- [Short summary](https://github.com/sasselab-teaching/GenomicS2F_seminar/blob/main/course_resources/github_basics.md)
+
+## Useful Python Libraries
+
+Please take a close look at some of the tutorials for these common python libraries. Run them on your own computer or use google colab. You should be able to work with their objects and create nice looking figures for your analyses. 
 
 - [numpy](https://numpy.org/doc/stable/user/quickstart.html)
 - [pandas](https://pandas.pydata.org/docs/user_guide/10min.html)
@@ -27,16 +66,19 @@ JupyterLab is a web-based interactive development environment for working with n
 
 For our tutorials, we will work with interactive nodes on Helix, similar to google colab. The web-based service [bwVisu](https://www.urz.uni-heidelberg.de/en/service-catalogue/software-and-applications/bwvisu) enables the user-friendly execution of  interactive and graphical applications on the powerful hardware of the  supercomputer bwForCluster Helix for the processing of scientific data  stored in bwForCluster Helix and in the storage service SDS@hd. A list  of available applications can be found in the bwVisu Wiki. bwVisu can  also be used for courses and workshops.
 
-Check out the [Wiki](https://wiki.bwhpc.de/e/Helix/bwVisu) and try it out with your Uni-ID. After opening Jupyter Lab, you can use a terminal and the notebook itself to install packages, clone github repos, in your work environment. We recommend that you install your miniconda environment into the mounted SDS partition for this course, and also keep data and notebooks there. 
+BwVisu requires a Uni-ID and at least membership of a ["**Speichervorhaben**“ (SV) (data storage projects)](https://www.urz.uni-heidelberg.de/de/service-katalog/speicher/sdshd-scientific-data-storage), or a ["**Rechenvorhaben**" (RV) (compute project)](https://wiki.bwhpc.de/e/Registration/bwForCluster). How to sign up for both related to this course will be provided to you at earliest possible time. 
+
+Check out their [Wiki](https://wiki.bwhpc.de/e/Helix/bwVisu) for all the information you need to get it to run.
+
+After opening a Jupyter Notebook on BwVisu, you should be able to create notebooks and use the terminal to also [create your environments, install packages, and create iPython Kernels](https://wiki.bwhpc.de/e/Helix/bwVisu/JupyterLab) to run your notebooks. 
 
 ## [Helix](https://www.urz.uni-heidelberg.de/de/service-katalog/hochleistungsrechnen/bwforcluster-helix)
 
-To train models over night for production, we will use the [BwForCluster Helix](https://www.urz.uni-heidelberg.de/de/service-katalog/hochleistungsrechnen/bwforcluster-helix). To be able to use the cluster you need to join a group's or an institute's so called 
+To train models with python scripts (see for example, [model_training.py]((https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/models.py.md))) over night for final production, we will use the [BwForCluster Helix](https://www.urz.uni-heidelberg.de/de/service-katalog/hochleistungsrechnen/bwforcluster-helix). To be able to use the cluster you need to join our 
 
 - [**Rechenvorhaben (RV)**](https://wiki.bwhpc.de/e/Registration/bwForCluster)
-- [**Speichervorhaben (SV)**](https://www.urz.uni-heidelberg.de/de/service-katalog/speicher/sdshd-scientific-data-storage)
 
-For instructions how to join the RV and SV for this course please see [here]
+For instructions how to join the RV and SV for this course please contact [office-sasse@zmbh.uni-heidelberg.de](office-sasse@zmbh.uni-heidelberg.de)
 
 ### Slurm
 
@@ -47,43 +89,41 @@ The Helix cluster, similar to other High Performance Computing (HPC) Systems at 
 
 ### Watch your usage
 
-If you use a cluster, time and resources will be allocated to you also based on your efficiency. If you are only using very few percentages of your compute or memory that you requested, your priority will go down. So make sure to monitor your usage with [Grafana](https://helix-monitoring.bwservices.uni-heidelberg.de)
+On the Helix cluster, time and resources are shared between all users. The available share of others in your RV depends on the total amount of requested memory and compute by all users. So please try to optimize your usage, and only request as much as you need! Please make sure to monitor your usage with [Grafana](https://helix-monitoring.bwservices.uni-heidelberg.de) and adjust your requested resources after each run. Good practice can be perform some test runs before training your model for several hours. 
 
-## Managing python packages
+### Run python script
 
-When you work locally, we recommend that use a package managing system. 
+You can run a Python script directly from the terminal by calling the Python interpreter and passing the script name, along with any arguments you want to provide. For example:
 
-conda is a **system** package manager. pip is a **Python** package manager. 
+```bash
+python program.py --argument value
+```
 
-With conda you can install much more than just Python libraries.  You can install entire software stacks such as Python + Django + Celery + PostgreSQL + nginx. You can install R, R libraries, Node.js, Java  programs, C and C++ programs and libraries, Perl programs, the list is  pretty long and limitless. conda has an `env` system that  allows you to have all of these installed across multiple different  environments. Also, conda is able to do all these software and package  installations in an isolated, userspace manner. This is *critical* because it means that you can install complex software stacks on a  system (such as your employer's heavily regulated production server) **without** needing root privileges.
+In this example, `program.py` is your script, and `--argument value` is an input you pass to it. To handle such arguments inside your script, you can use the built-in **argparse** library. It lets you define what arguments your program accepts and automatically generates helpful messages. For instance:
 
-On the other hand, pip can only install Python packages, and it quite  often screws up the installations on multi-user systems, breaking global system dependencies and/or the user's dependency stacks. This is why  people who rely only on pip MUST use virtualenv
+```python
+import argparse
 
-- [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/install)
-- [Mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) is a modern alternative to Miniconda.
-- [Venv and pip](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
-- [Short summary](https://github.com/sasselab-teaching/GenomicS2F_seminar//blob/main/course_resources/Setup_work_environment.md) to set  up your working environment
+parser = argparse.ArgumentParser(description="Example script")
+parser.add_argument("--argument", type=str, help="An example argument")
+args = parser.parse_args()
 
-## VS Code
+print(f"You passed: {args.argument}")
+```
 
-The Open Source AI Code Editor (much more helpful than a text editor for coding)
+Now, when you run `python program.py --argument hello`, it will print:
 
-- [Getting started](https://code.visualstudio.com/docs/introvideos/basics)
-- Has many useful [extensions](https://marketplace.visualstudio.com/VSCode) that make writing code much easier. Install them easily after opening the app. 
-- Get help with [GitHub's Copilot](https://code.visualstudio.com/docs/copilot/overview) directly in Vs Code
-  - Apply for [GitHub education](https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student) with your student card to get unlimited access to Copilot
+```
+You passed: hello
+```
 
-## Version control with Git(Hub)
-
-Version control is a system that helps developers track and manage changes to their code over time. **Git** is a powerful distributed version control tool that allows multiple people to work on a project simultaneously, keeping a history of all modifications and enabling easy collaboration, branching, and merging. **GitHub** is a cloud-based platform built on top of Git that provides hosting for repositories, making it simple to share code, review changes, and contribute to open-source or team projects. Together, Git and GitHub ensure smoother collaboration, better organization, and safer development practices.
-
-- [Short summary](https://github.com/sasselab-teaching/GenomicS2F_seminar/blob/main/course_resources/github_basics.md)
+This makes your Python scripts flexible, reusable, and easy to run with different inputs.
 
 ## Python Packaging for module sharing
 
 Python installable packages make it easy to share and reuse code across your assignments and projects. Using **pip**, you can install packages from the Python Package Index (PyPI) or other sources with a single command. To create your own package, tools like **setuptools** let you define your project’s metadata—such as its name, version, and dependencies—in a `setup.py` or `pyproject.toml` file. This way, you or your teammates can quickly install your shared functions, objects, and modules into your environment with a single command (`pip install package-name`) , making collaboration and project management much smoother.
 
-- [Short summary](https://github.com/sasselab-teaching/GenomicS2F_seminar/blob/main/course_resources/pip_installable_code_base.md)
+- [Short summary](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/pip_installable_code_base.md)
 
 ### Reuse your modules and functions with [setuptools](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md)
 
@@ -108,7 +148,7 @@ ef.hello('world')
 
 ## Papers
 
-There are a few [key papers](https://github.com/sasselab-teaching/GenomicS2F_seminar/blob/main/course_resources/Reading_list.md) that are defining the field. An extended list of current fundamental papers can be found [here](https://heibox.uni-heidelberg.de/f/765d192086fc479db542/)
+There are a few [key papers](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/Reading_list.md) that are defining the field.
 
 ## Videos
 
