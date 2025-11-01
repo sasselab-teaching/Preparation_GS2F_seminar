@@ -1,7 +1,57 @@
-# **Terminal Quick Reference**
+# Basics for using the terminal
 
-~~~md
-# Terminal & Remote Access Quick Reference
+## Bash
+
+`bash` is **one of many shells** that can be used in a terminal. Whether `bash` is available or the default depends on your operating system and terminal setup:
+
+------
+
+### 1️⃣ Common Shells
+
+| Shell                                 | Typical OS / Notes                                           |
+| ------------------------------------- | ------------------------------------------------------------ |
+| **bash** (Bourne Again SHell)         | Default on most Linux distros, available on MacOS. Widely used in tutorials. |
+| **zsh** (Z Shell)                     | Default on newer MacOS versions (from Catalina onward). Can run `bash` commands mostly. |
+| **sh** (Bourne Shell)                 | Very basic shell, compatible with most scripts.              |
+| **fish** (Friendly Interactive Shell) | Optional, user-friendly shell with fancy features, not fully compatible with `bash` scripts. |
+| **PowerShell**                        | Default on Windows terminals (modern Windows). Can run bash commands via WSL or Git Bash. |
+
+------
+
+### 2️⃣ How to Check Which Shell You’re Using
+
+In your terminal, type:
+
+```bash
+echo $SHELL
+```
+
+- `/bin/bash` → bash
+- `/bin/zsh` → zsh
+- `/usr/bin/fish` → fish
+- On Windows: may show PowerShell or WSL path
+
+------
+
+### 3️⃣ Running Bash Commands in Other Shells
+
+- **Most shells** (zsh, sh, even fish with some tweaks) can run `bash` scripts, especially simple ones like `wget`, `bash installer.sh`, etc.
+- If a tutorial says `bash install.sh`, and your shell is zsh, you can usually just run the same command:
+
+```bash
+bash install.sh
+```
+
+- On Windows, you may need:
+  - **Git Bash** (bundled with Git for Windows)
+  - **WSL (Windows Subsystem for Linux)**
+
+------
+
+✅ **Summary:**
+ `bash` is common but **not guaranteed** to be your default shell. Many commands in Python/Conda/Jupyter tutorials assume bash because it’s standard on Linux and MacOS. On Windows, using Git Bash, WSL, or a Linux VM is often necessary to follow bash-based instructions directly.
+
+## Terminal & Remote Access Quick Reference
 
 ## 1. Navigating the Terminal
 - **`pwd`** – Show current directory.
@@ -35,7 +85,6 @@
 - **Bash script**:
   ```bash
   bash script.sh
-~~~
 
 or make executable:
 

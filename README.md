@@ -1,10 +1,54 @@
 # Resources for course preparation
 
+## [BwVisu](https://www.urz.uni-heidelberg.de/en/service-catalogue/software-and-applications/bwvisu)
+
+For our tutorials, we will work with interactive nodes on Helix, similar to google colab. The web-based service [bwVisu](https://www.urz.uni-heidelberg.de/en/service-catalogue/software-and-applications/bwvisu) enables the user-friendly execution of  interactive and graphical applications on the powerful hardware of the  supercomputer bwForCluster Helix for the processing of scientific data  stored in bwForCluster Helix and in the storage service SDS@hd. A list  of available applications can be found in the bwVisu Wiki. bwVisu can  also be used for courses and workshops.
+
+BwVisu requires a Uni-ID and at least membership of a ["**Speichervorhaben**“ (SV) (data storage projects)](https://www.urz.uni-heidelberg.de/de/service-katalog/speicher/sdshd-scientific-data-storage), or a ["**Rechenvorhaben**" (RV) (compute project)](https://wiki.bwhpc.de/e/Registration/bwForCluster). 
+
+Moreover, most university services are only available within the university network. Please install and configure [Cisco Secure Client](https://www.urz.uni-heidelberg.de/en/service-catalogue/network/vpn-virtual-private-network) to connect to the virtual private network. You will need [MFA](https://www.urz.uni-heidelberg.de/en/service-catalogue/it-security/multi-factor-authentication-mfa) for this. 
+
+Please [join the SV](https://wiki.bwhpc.de/e/SDS@hd/Registration#Join_existing_SV) for this course using the shared credentials!!!
+
+Check out the [BwVisu Wiki](https://wiki.bwhpc.de/e/Helix/bwVisu) for all the information you need to get it to run. 
+
+[1) Register for BwVisu service](https://wiki.bwhpc.de/e/Helix/bwVisu/Getting_Started#Registration)
+
+After opening a Jupyter Notebook on BwVisu, you should be able to create notebooks and use the terminal. 
+
+Open the terminal and create your own directory for your practice or workshop:
+
+```
+# Use -m 750 to disallow others to write in your directory
+mkdir -m 750 mydir       # dir: owner=rwx, group=r-x, others=---
+# To ensure all files inside a directory have no write access for the group you manually have to set them to to this with chmod
+chmod 750 mydir/*
+```
+
+PLEASE ABSTAIN from installing your own miniconda! PLEASE use the pre-installed conda in the SDS. To activate the installed conda:
+
+```
+# Activate conda
+source /mnt/sds-hd/sd25j001/miniconda3/bin/activate
+# See all existing environments
+conda env list
+# THIS IS the environment for the practices and workshop!!!
+conda activate pytorch_env
+# To use this environment in your Jupyter notebook, you need to create a python kernel while you are in the environment
+python -m ipykernel install --user --name course_env --display-name "Python (course_env)"
+# Call conda init if you want this conda environment automatically be loaded from this shared location when you open the terminal (recommended)
+conda init
+```
+
+## Work environment on your own Laptop
+
+We recommend [setting up your own laptop](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Setup_work_environment.md) with VS Code and Jupyter Lab
+
 ## **Bash** (Bourne Again SHell) 
 
-is a powerful command-line tool that makes it easy to manage software and work on remote machines via [the terminal](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/Setup_work_environment.md). With Bash, you can quickly install and update Python packages using tools like `pip` or `conda`, making project setup and dependency management much more efficient. It’s especially important for working on remote servers, where you don’t have a graphical interface and need to rely on terminal commands to navigate files, set up environments, and run programs. Knowing Bash simplifies installing packages, managing projects, and maintaining productivity when working in remote or cloud-based environments.
+is a powerful command-line tool that makes it easy to manage software and work on remote machines via the [terminal](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Terminal_basics.md). With Bash, you can quickly install and update Python packages using tools like `pip` or `conda`, making project setup and dependency management much more efficient. It’s especially important for working on remote servers, where you don’t have a graphical interface and need to rely on terminal commands to navigate files, set up environments, and run programs. Knowing Bash simplifies installing packages, managing projects, and maintaining productivity when working in remote or cloud-based environments.
 
-See [here for basics](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/Setup_work_environment.md)
+See [here for basics](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Terminal_basics.md)
 
 ## Managing python packages
 
@@ -16,7 +60,7 @@ With conda you can install much more than just Python libraries.  You can instal
 
 On the other hand, pip can only install Python packages, and it quite often screws up the installations on multi-user systems, breaking global system dependencies and/or the user's dependency stacks. This is why  people who rely only on pip MUST use virtualenv. 
 
-Please see here how to set up your [virtual environment](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/Setup_work_environment.md)
+Please see here how to set up your [virtual environment](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Pip_and_Conda.md)
 
 For example use:
 
@@ -37,7 +81,23 @@ For writing code outside Jupyter Lab, we recommend using **Visual Studio Code (V
 
 Version control is a system that helps developers track and manage changes to their code over time. **Git** is a powerful distributed version control tool that allows multiple people to work on a project simultaneously, keeping a history of all modifications and enabling easy collaboration, branching, and merging. **GitHub** is a cloud-based platform built on top of Git that provides hosting for repositories, making it simple to share code, review changes, and contribute to open-source or team projects. Together, Git and GitHub ensure smoother collaboration, better organization, and safer development practices.
 
-- [Short summary](https://github.com/sasselab-teaching/GenomicS2F_seminar/blob/main/course_resources/github_basics.md)
+- [Short summary](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/github_basics.md)
+
+### As practice: Fork, clone, and install this repository with pip
+
+If you don’t have write access to a repo:
+
+1. Click **Fork** on GitHub to create your own copy.
+
+2. Clone your fork:
+
+   ```bash
+   git clone git@github.com:yourusername/repository.git
+   ```
+
+3. Install with pip: ``` pip install -e . ```
+
+4. If you create fun and interesting notebooks during your preparation, please commit, push, then open a Pull Request to the original repo.
 
 ## Useful Python Libraries
 
@@ -62,23 +122,25 @@ JupyterLab is a web-based interactive development environment for working with n
 
 - [Install](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html) and try it out with some tutorials
 
-## [BwVisu](https://www.urz.uni-heidelberg.de/en/service-catalogue/software-and-applications/bwvisu)
+## bwJupyter for Education
 
-For our tutorials, we will work with interactive nodes on Helix, similar to google colab. The web-based service [bwVisu](https://www.urz.uni-heidelberg.de/en/service-catalogue/software-and-applications/bwvisu) enables the user-friendly execution of  interactive and graphical applications on the powerful hardware of the  supercomputer bwForCluster Helix for the processing of scientific data  stored in bwForCluster Helix and in the storage service SDS@hd. A list  of available applications can be found in the bwVisu Wiki. bwVisu can  also be used for courses and workshops.
+**Modern, digitized university teaching with  [bwJupyter](https://www.bwjupyter.de/english/index.php) !**
 
-BwVisu requires a Uni-ID and at least membership of a ["**Speichervorhaben**“ (SV) (data storage projects)](https://www.urz.uni-heidelberg.de/de/service-katalog/speicher/sdshd-scientific-data-storage), or a ["**Rechenvorhaben**" (RV) (compute project)](https://wiki.bwhpc.de/e/Registration/bwForCluster). How to sign up for both related to this course will be provided to you at earliest possible time. 
+With [bwJupyter](https://www.bwjupyter.de/english/index.php) for teaching, all universities in Baden-Württemberg have access to a **central, web-based development environment** that was developed through the joint efforts of KIT and the University  of Stuttgart. The state service bwJupyter gives learners **intuitive and practical access to data analysis and programming** without the hassle of installation and version problems. It offers configurable profiles for efficiently sharing, collecting, and automatically  evaluating learning materials. 
 
-Check out their [Wiki](https://wiki.bwhpc.de/e/Helix/bwVisu) for all the information you need to get it to run.
+Tip: You can use bwJupyther without signing up for an SV or RV to practice with the resources provided in this repo
 
-After opening a Jupyter Notebook on BwVisu, you should be able to create notebooks and use the terminal to also [create your environments, install packages, and create iPython Kernels](https://wiki.bwhpc.de/e/Helix/bwVisu/JupyterLab) to run your notebooks. 
+## Google Colab
+
+Another alternative for practicing without installing anything on your own machine is [google colab](https://colab.google/). Colab even offers access to high-end GPUs that you can use for up to a day. 
 
 ## [Helix](https://www.urz.uni-heidelberg.de/de/service-katalog/hochleistungsrechnen/bwforcluster-helix)
 
-To train models with python scripts (see for example, [model_training.py]((https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/models.py.md))) over night for final production, we will use the [BwForCluster Helix](https://www.urz.uni-heidelberg.de/de/service-katalog/hochleistungsrechnen/bwforcluster-helix). To be able to use the cluster you need to join our 
+To train models with python scripts (see for example, [model_training.py]((https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/models.py.md))) over night for final production, we will use the [BwForCluster Helix](https://www.urz.uni-heidelberg.de/de/service-katalog/hochleistungsrechnen/bwforcluster-helix). To be able to use the cluster you need to join our 
 
 - [**Rechenvorhaben (RV)**](https://wiki.bwhpc.de/e/Registration/bwForCluster)
 
-For instructions how to join the RV and SV for this course please contact [office-sasse@zmbh.uni-heidelberg.de](office-sasse@zmbh.uni-heidelberg.de)
+Credentials to sign up for the Rechenvorhaben will be provided during the course.
 
 ### Slurm
 
@@ -91,7 +153,7 @@ The Helix cluster, similar to other High Performance Computing (HPC) Systems at 
 
 On the Helix cluster, time and resources are shared between all users. The available share of others in your RV depends on the total amount of requested memory and compute by all users. So please try to optimize your usage, and only request as much as you need! Please make sure to monitor your usage with [Grafana](https://helix-monitoring.bwservices.uni-heidelberg.de) and adjust your requested resources after each run. Good practice can be perform some test runs before training your model for several hours. 
 
-### Run python script
+### Run python script in terminal or on helix interactive session (use salloc)
 
 You can run a Python script directly from the terminal by calling the Python interpreter and passing the script name, along with any arguments you want to provide. For example:
 
@@ -123,7 +185,7 @@ This makes your Python scripts flexible, reusable, and easy to run with differen
 
 Python installable packages make it easy to share and reuse code across your assignments and projects. Using **pip**, you can install packages from the Python Package Index (PyPI) or other sources with a single command. To create your own package, tools like **setuptools** let you define your project’s metadata—such as its name, version, and dependencies—in a `setup.py` or `pyproject.toml` file. This way, you or your teammates can quickly install your shared functions, objects, and modules into your environment with a single command (`pip install package-name`) , making collaboration and project management much smoother.
 
-- [Short summary](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/pip_installable_code_base.md)
+- [Short summary](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md)
 
 ### Reuse your modules and functions with [setuptools](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md)
 
@@ -148,7 +210,7 @@ ef.hello('world')
 
 ## Papers
 
-There are a few [key papers](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/course_resources/Reading_list.md) that are defining the field.
+There are a few [key papers](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Reading_list.md) that are defining the field.
 
 ## Videos
 

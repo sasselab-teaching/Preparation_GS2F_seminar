@@ -1,5 +1,8 @@
-data/
+*data/
 .ipynb_checkpoints/
 *~
 **/__pycache__/
 *.egg-info/
+*models/
+*checkpoints/
+*in_progress/
