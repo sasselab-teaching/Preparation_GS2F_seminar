@@ -14,18 +14,11 @@ Check out the [BwVisu Wiki](https://wiki.bwhpc.de/e/Helix/bwVisu) for all the in
 
 [1) Register for BwVisu service](https://wiki.bwhpc.de/e/Helix/bwVisu/Getting_Started#Registration)
 
-After opening a Jupyter Notebook on BwVisu, you should be able to create notebooks and use the terminal. 
+After opening a Jupyter Notebook on **BwVisu**, you can create new notebooks and access the terminal. Each BwVisu user automatically receives a **home directory on Helix** with **200 GB** of storage, where you can install programs and manage your own data.
 
-Open the terminal and create your own directory for your practice or workshop:
+Without registering for an **RV**, you cannot submit jobs, but you can still run **JupyterLab** in BwVisu for up to **6 hours**, including the scripts, that run in the terminal over night. 
 
-```
-# Use -m 750 to disallow others to write in your directory
-mkdir -m 750 mydir       # dir: owner=rwx, group=r-x, others=---
-# To ensure all files inside a directory have no write access for the group you manually have to set them to to this with chmod
-chmod 750 mydir/*
-```
-
-PLEASE ABSTAIN from installing your own miniconda! PLEASE use the pre-installed conda in the SDS. To activate the installed conda:
+Instead of installing your own Miniforge or Miniconda, you can use the **pre-installed Conda environment** in the **SDS**. To activate the installed Conda environment, use the following command:
 
 ```
 # Activate conda
@@ -36,13 +29,15 @@ conda env list
 conda activate pytorch_env
 # To use this environment in your Jupyter notebook, you need to create a python kernel while you are in the environment
 python -m ipykernel install --user --name course_env --display-name "Python (course_env)"
-# Call conda init if you want this conda environment automatically be loaded from this shared location when you open the terminal (recommended)
+# Call conda init if you want this conda environment automatically be loaded from this shared location when you open the terminal
 conda init
+# During the project phase, you can clone this environment with all packages and use it as a start for your project environment
+conda create --name new_env_name --clone old_env_name
 ```
 
 ## Work environment on your own Laptop
 
-We recommend [setting up your own laptop](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Setup_work_environment.md) with VS Code and Jupyter Lab
+We recommend [setting up your own laptop](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Setup_work_environment.md) with VS Code and Jupyter Lab. 
 
 ## **Bash** (Bourne Again SHell) 
 
@@ -52,7 +47,7 @@ See [here for basics](https://github.com/sasselab-teaching/Preparation_GS2F_semi
 
 ## Managing python packages
 
-When you work locally on your own computer, we recommend that use a package managing system. 
+When you work locally on your own computer, we recommend that use a package managing system. Please see [here](https://wiki.bwhpc.de/e/Development/Python) for more information on python.
 
 conda is a **system** package manager. pip is a **Python** package manager. 
 
