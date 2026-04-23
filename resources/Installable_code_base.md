@@ -2,6 +2,8 @@
 
 This guide shows how to structure a Python package so that it can be installed in editable mode and used from local scripts. The packaging examples use `setuptools`, and the workflow examples use `uv` to create environments, install the package, and run code.
 
+See the [Python Environment Management](Python_environment_management.md) guide for more details on how to install uv and how to manage Python environments and dependencies with `uv` and other tools.
+
 Editable installation is useful during development because changes in your source files are available immediately without reinstalling the package after every edit.
 
 ------
