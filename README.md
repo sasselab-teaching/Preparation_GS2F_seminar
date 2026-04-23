@@ -4,23 +4,23 @@
 
 For our tutorials, we will work with interactive nodes on Helix, similar to google colab. The web-based service [bwVisu](https://www.urz.uni-heidelberg.de/en/service-catalogue/software-and-applications/bwvisu) enables the user-friendly execution of  interactive and graphical applications on the powerful hardware of the  supercomputer bwForCluster Helix for the processing of scientific data  stored in bwForCluster Helix and in the storage service SDS@hd. A list  of available applications can be found in the bwVisu Wiki. bwVisu can  also be used for courses and workshops.
 
-BwVisu requires a Uni-ID and at least membership of a ["**Speichervorhaben**“ (SV) (data storage projects)](https://www.urz.uni-heidelberg.de/de/service-katalog/speicher/sdshd-scientific-data-storage), or a ["**Rechenvorhaben**" (RV) (compute project)](https://wiki.bwhpc.de/e/Registration/bwForCluster). 
+BwVisu requires a Uni-ID and at least membership of a ["**Speichervorhaben**“ (SV) (data storage projects)](https://www.urz.uni-heidelberg.de/de/service-katalog/speicher/sdshd-scientific-data-storage), or a ["**Rechenvorhaben**" (RV) (compute project)](https://wiki.bwhpc.de/e/Registration/bwForCluster).
 
-Moreover, most university services are only available within the university network. Please install and configure [Cisco Secure Client](https://www.urz.uni-heidelberg.de/en/service-catalogue/network/vpn-virtual-private-network) to connect to the virtual private network. You will need [MFA](https://www.urz.uni-heidelberg.de/en/service-catalogue/it-security/multi-factor-authentication-mfa) for this. 
+Moreover, most university services are only available within the university network. Please install and configure [Cisco Secure Client](https://www.urz.uni-heidelberg.de/en/service-catalogue/network/vpn-virtual-private-network) to connect to the virtual private network. You will need [MFA](https://www.urz.uni-heidelberg.de/en/service-catalogue/it-security/multi-factor-authentication-mfa) for this.
 
 Please [join the SV](https://wiki.bwhpc.de/e/SDS@hd/Registration#Join_existing_SV) for this course using the shared credentials!!!
 
-Check out the [BwVisu Wiki](https://wiki.bwhpc.de/e/Helix/bwVisu) for all the information you need to get it to run. 
+Check out the [BwVisu Wiki](https://wiki.bwhpc.de/e/Helix/bwVisu) for all the information you need to get it to run.
 
 [1) Register for BwVisu service](https://wiki.bwhpc.de/e/Helix/bwVisu/Getting_Started#Registration)
 
 After opening a Jupyter Notebook on **BwVisu**, you can create new notebooks and access the terminal. Each BwVisu user automatically receives a **home directory on Helix** with **200 GB** of storage, where you can install programs and manage your own data.
 
-Without registering for an **RV**, you cannot submit jobs, but you can still run **JupyterLab** in BwVisu for up to **6 hours**, including the scripts, that run in the terminal over night. 
+Without registering for an **RV**, you cannot submit jobs, but you can still run **JupyterLab** in BwVisu for up to **6 hours**, including the scripts, that run in the terminal over night.
 
 Instead of installing your own Miniforge or Miniconda, you can use the **pre-installed Conda environment** in the **SDS**. To activate the installed Conda environment, use the following command:
 
-```
+```bash
 # Activate conda
 source /mnt/sds-hd/sd25j001/miniconda3/bin/activate
 # See all existing environments
@@ -37,9 +37,9 @@ conda create --name new_env_name --clone old_env_name
 
 ## Work environment on your own Laptop
 
-We recommend [setting up your own laptop](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Setup_work_environment.md) with VS Code and Jupyter Lab. 
+We recommend [setting up your own laptop](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Setup_work_environment.md) with VS Code and Jupyter Lab.
 
-## **Bash** (Bourne Again SHell) 
+## **Bash** (Bourne Again SHell)
 
 is a powerful command-line tool that makes it easy to manage software and work on remote machines via the [terminal](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Terminal_basics.md). With Bash, you can quickly install and update Python packages using tools like `pip` or `conda`, making project setup and dependency management much more efficient. It’s especially important for working on remote servers, where you don’t have a graphical interface and need to rely on terminal commands to navigate files, set up environments, and run programs. Knowing Bash simplifies installing packages, managing projects, and maintaining productivity when working in remote or cloud-based environments.
 
@@ -47,20 +47,29 @@ See [here for basics](https://github.com/sasselab-teaching/Preparation_GS2F_semi
 
 ## Managing python packages
 
-When you work locally on your own computer, we recommend that use a package managing system. Please see [here](https://wiki.bwhpc.de/e/Development/Python) for more information on python.
+When you work locally on your own computer, use an isolated Python environment for each project. See the [bwHPC Python environment notes](https://wiki.bwhpc.de/e/Development/Python) for more information on Python environments on HPC systems.
 
-conda is a **system** package manager. pip is a **Python** package manager. 
+There are three common workflows covered in this repository:
 
-With conda you can install much more than just Python libraries.  You can install entire software stacks such as Python + Django + Celery + PostgreSQL + nginx. You can install R, R libraries, Node.js, Java  programs, C and C++ programs and libraries, Perl programs, the list is  pretty long and limitless. conda has an `env` system that  allows you to have all of these installed across multiple different  environments. Also, conda is able to do all these software and package  installations in an isolated, userspace manner. This is *critical* because it means that you can install complex software stacks on a  system (such as your employer's heavily regulated production server) **without** needing root privileges.
+- `pip` together with `venv`
+- `conda` or `mamba`
+- `uv`
 
-On the other hand, pip can only install Python packages, and it quite often screws up the installations on multi-user systems, breaking global system dependencies and/or the user's dependency stacks. This is why  people who rely only on pip MUST use virtualenv. 
+`pip` is the standard Python package manager and is commonly used together with `venv` for lightweight Python-only projects. `conda` and `mamba` can also manage non-Python dependencies, which is useful for larger scientific software stacks. `uv` is a fast modern tool for managing Python versions, virtual environments, dependencies, and project workflows.
 
-Please see here how to set up your [virtual environment](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Pip_and_Conda.md)
+For most local course work, we recommend `uv` because it makes it easy to create isolated environments, install dependencies, and run scripts reproducibly. If you need compiled scientific dependencies or mixed Python and non-Python stacks, `conda` or `mamba` can still be a good choice.
 
-For example use:
+Please see the guides here:
 
-- [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/install): is s minimal installer for Conda that provides Conda itself (~400MB), but without all the extra pre-installed packages that come with Anaconda (~4GB).
-- [Mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) is a modern alternative to Miniconda.
+- [Python environment management](resources/Python_environment_management.md)
+- [Local setup with uv, VS Code, and Jupyter](resources/Setup_work_environment.md)
+
+Useful starting points:
+
+- [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/install/overview)
+- [Mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html)
+- [Miniforge](https://github.com/conda-forge/miniforge)
+- [uv](https://docs.astral.sh/uv/)
 - [Venv and pip](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
 
 ## VS Code
@@ -78,7 +87,7 @@ Version control is a system that helps developers track and manage changes to th
 
 - [Short summary](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/github_basics.md)
 
-### As practice: Fork, clone, and install this repository with pip
+### As practice: Fork, clone, and install this repository
 
 If you don’t have write access to a repo:
 
@@ -90,9 +99,13 @@ If you don’t have write access to a repo:
    git clone git@github.com:yourusername/repository.git
    ```
 
-3. Install with pip: ``` pip install -e . ```
+3. Create the environment and install the repository:
 
-4. If you create fun and interesting notebooks during your preparation, please commit, push, then open a Pull Request to the original repo.
+  ```bash
+  uv sync
+  ```
+
+1. If you create fun and interesting notebooks during your preparation, please commit, push, then open a Pull Request to the original repo.
 
 ## Useful Python Libraries
 
@@ -178,19 +191,19 @@ This makes your Python scripts flexible, reusable, and easy to run with differen
 
 ## Python Packaging for module sharing
 
-Python installable packages make it easy to share and reuse code across your assignments and projects. Using **pip**, you can install packages from the Python Package Index (PyPI) or other sources with a single command. To create your own package, tools like **setuptools** let you define your project’s metadata—such as its name, version, and dependencies—in a `setup.py` or `pyproject.toml` file. This way, you or your teammates can quickly install your shared functions, objects, and modules into your environment with a single command (`pip install package-name`) , making collaboration and project management much smoother.
+Python installable packages make it easy to share and reuse code across your assignments and projects. Tools like **setuptools** let you define your project metadata, such as its name, version, and dependencies, in a `pyproject.toml` file and optionally `setup.cfg`. This way, you or your teammates can install shared functions, objects, and modules into a project environment and run local scripts against the same code base.
 
-- [Short summary](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md)
+- [Short summary](resources/pip_installable_code_base.md)
 
-### Reuse your modules and functions with [setuptools](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md)
+### Reuse your modules and functions with [setuptools](resources/pip_installable_code_base.md)
 
 You want to make a Python package that you can install in **editable mode** with 
 
-`pip install -e .` 
+`uv pip install -e .` 
 
-This is super useful when you are working on a project and want to use other people's plotting, read, or processing functions, and objects. You can all add the functions to a common `modules.py` script, or even have several python files for different types of objects, e.g. `plot_functions.py`, `io_utils.py`. Before starting to work, you can pull changes that your peers added from github, and start using them simply by `from mypackage.io_utils import readcsv`. Read more [here](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/pip_installable_code_base.md). When a package was installed in editable mode, changes in your package will directly be usable without having to install them again.
+This is useful when you are working on a project and want to reuse plotting, reading, processing, or modeling functions across notebooks and scripts. You can place shared code into one or more Python modules, install the package into the project environment, and then import it from anywhere in the repository. Read more in the [packaging guide](resources/pip_installable_code_base.md). When a package is installed in editable mode, changes in your package are directly usable without reinstalling after every edit.
 
-Try it out with this repository! Install with pip, and import the example module. You can simply edit the `setup.cfg` and `pyproject.toml` and `src/` content to create your own.
+Try it out with this repository. Create the environment with `uv sync`, or install it explicitly with `uv pip install -e .`, and then import the example module. You can edit the `setup.cfg`, `pyproject.toml`, and `src/` content to create your own package.
 
 ```
 # If 'hello' function was imported into __init__.py
