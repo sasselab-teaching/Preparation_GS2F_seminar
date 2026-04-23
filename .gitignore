@@ -6,3 +6,4 @@
 *models/
 *checkpoints/
 *in_progress/
+.venv
