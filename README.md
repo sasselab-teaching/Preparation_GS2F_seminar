@@ -18,23 +18,6 @@ After opening a Jupyter Notebook on **BwVisu**, you can create new notebooks and
 
 Without registering for an **RV**, you cannot submit jobs, but you can still run **JupyterLab** in BwVisu for up to **6 hours**, including the scripts, that run in the terminal over night.
 
-Instead of installing your own Miniforge or Miniconda, you can use the **pre-installed Conda environment** in the **SDS**. To activate the installed Conda environment, use the following command:
-
-```bash
-# Activate conda
-source /mnt/sds-hd/sd25j001/miniconda3/bin/activate
-# See all existing environments
-conda env list
-# THIS IS the environment for the practices and workshop!!!
-conda activate pytorch_env
-# To use this environment in your Jupyter notebook, you need to create a python kernel while you are in the environment
-python -m ipykernel install --user --name course_env --display-name "Python (course_env)"
-# Call conda init if you want this conda environment automatically be loaded from this shared location when you open the terminal
-conda init
-# During the project phase, you can clone this environment with all packages and use it as a start for your project environment
-conda create --name new_env_name --clone old_env_name
-```
-
 ## Work environment on your own Laptop
 
 We recommend [setting up your own laptop](https://github.com/sasselab-teaching/Preparation_GS2F_seminar/blob/main/resources/Setup_work_environment.md) with VS Code and Jupyter Lab.
